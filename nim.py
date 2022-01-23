@@ -92,9 +92,9 @@ class NimAI():
         in that state, a new resulting state, and the reward received
         from taking that action.
         """
-        old = self.get_q_value(old_state, action)
+        old = self.get_q_value(tuple(old_state), action)
         best_future = self.best_future_reward(new_state)
-        self.update_q_value(old_state, action, old, reward, best_future)
+        self.update_q_value(tuple(old_state), action, old, reward, best_future)
 
     def get_q_value(self, state, action):
         """
