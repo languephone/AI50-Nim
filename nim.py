@@ -134,11 +134,11 @@ class NimAI():
         `state`, return 0.
         """
 
-        if not Nim.available_actions():
+        if not Nim.available_actions(state):
             return 0
 
         best_reward = -1
-        for action in Nim.available_actions():
+        for action in Nim.available_actions(state):
             current_future_reward = self.get_q_value(state, action)
             if current_future_reward > best_reward:
                 best_reward = current_future_reward
@@ -163,14 +163,14 @@ class NimAI():
         print(f"Epsilon value: {self.epsilon}")
         if epsilon and random.random() <= self.epsilon:
             print("Choosing epsilon route")
-            epi_action = random.choice(Nim.available_actions())
+            epi_action = random.choice(Nim.available_actions(state))
             print(f"Epsilon action: {epi_action}")
-            return random.choice(Nim.available_actions())
+            return random.choice(Nim.available_actions(state))
 
         else:
             print("Choosing non-epsilon route")
             best_reward = self.best_future_reward(state)
-            for action in Nim.available_actions():
+            for action in Nim.available_actions(state):
                 print(f"Checking action: {action}")
                 if self.q[tuple(state), action] == best_reward:
                     print(f"Best action: {action}")
