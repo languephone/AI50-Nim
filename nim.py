@@ -162,7 +162,7 @@ class NimAI():
 
         if epsilon:
             if random.random() <= self.epsilon:
-                random.choice(game.available_actions())
+                return random.choice(game.available_actions())
 
         else:
             best_reward = self.best_future_reward(state)
