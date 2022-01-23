@@ -134,7 +134,7 @@ class NimAI():
         `state`, return 0.
         """
 
-        if len(game.available_actions()) == 0:
+        if not game.available_actions():
             return 0
 
         best_reward = -1
