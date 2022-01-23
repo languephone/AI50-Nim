@@ -121,7 +121,7 @@ class NimAI():
         is the sum of the current reward and estimated future rewards.
         """
         self.q[state, action] = old_q + (self.alpha * (reward + future_rewards
-            - old_q))
+                                                        - old_q))
 
     def best_future_reward(self, state):
         """
@@ -168,6 +168,7 @@ class NimAI():
             for action in Nim.available_actions(state):
                 if self.get_q_value(state, action) == best_reward:
                     return action
+
 
 def train(n):
     """
