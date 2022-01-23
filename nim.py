@@ -134,11 +134,11 @@ class NimAI():
         `state`, return 0.
         """
 
-        if not game.available_actions():
+        if not Nim.available_actions():
             return 0
 
         best_reward = -1
-        for action in game.available_actions():
+        for action in Nim.available_actions():
             current_future_reward = self.get_q_value(state, action)
             if current_future_reward > best_reward:
                 best_reward = current_future_reward
@@ -162,11 +162,11 @@ class NimAI():
 
         if epsilon:
             if random.random() <= self.epsilon:
-                return random.choice(game.available_actions())
+                return random.choice(Nim.available_actions())
 
         else:
             best_reward = self.best_future_reward(state)
-            for action in game.available_actions():
+            for action in Nim.available_actions():
                 if self.q[tuple(state), action] == best_reward:
                     return action
 
